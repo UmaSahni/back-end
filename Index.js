@@ -19,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
     console.log("database connected succesfully");
 })
 .catch((err)=>{
-    console.log(error);
+    console.log(err);
 })
 
 
