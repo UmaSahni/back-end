@@ -22,8 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
     console.log(err);
 })
 
-
-app.get("/",(req,res)=>{
+app.get("/rootdir",(req,res)=>{
     res.send("hello world ")
 })
 
