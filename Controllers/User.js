@@ -25,20 +25,25 @@ import jwt from "jsonwebtoken"
       }
 }
 
-const login=async(req,res)=>{
+const login= async(req,res)=>{
+  const{ email, password}=req.body
   try {
-    const{ email, password}=req.body
-    const checkuser=await User.findOne({email})
+    
+    
+    const checkuser = await User.findOne({email})
+   
     if(!checkuser){
       return res.status(400).json({"message":"user not find"})
     }
+    
     const comparepass= await bcrypt.compare(password,checkuser.password)
+
     if(!comparepass){
        return res.status(408).json({succes:false,messge:"password not matched "})
-       
-
     }
-    const token =await jwt.sign({userId:checkuser._id},process.env.SECRETE_KEY,{expiresIn:"30m"})
+    
+    const token = await jwt.sign({userId:checkuser._id},process.env.SECRETE_KEY,{expiresIn:"30m"})
+  
     const username=checkuser.name
    
     
