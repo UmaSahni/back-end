@@ -46,7 +46,7 @@ const login=async(req,res)=>{
      return res.status(201).json({success:true,message:"suceefully loged in", username  ,token })
     
   } catch (error) {
-    return res.status(400).json({"message":" failed to login"})
+    return res.status(400).json({"message":" failed to login", error})
   }
 }
 
